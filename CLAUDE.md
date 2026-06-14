@@ -91,3 +91,55 @@ import { createApiClient, ROUTES, type ApiResponse } from '@repo/shared';
 2. Update `name` and port in `package.json`
 3. Update `tsconfig.json` paths
 4. Add a `dev:your-app` script to root `package.json`
+
+### Path aliases
+
+Each app has two sets of path aliases in `tsconfig.json`:
+- `@/*` → local app root (e.g. `@/components/Navbar`)
+- `@repo/ui` and `@repo/shared` → shared packages
+
+---
+
+## Skills
+
+Skills are in `.claude/skills/`. Use the `Skill` tool to invoke them.
+
+| Skill | When to use |
+|-------|-------------|
+| `ui` | Building or refactoring any UI component |
+| `api-integration` | Integrating REST API endpoints |
+| `unit-test-generator` | Writing tests for components or pages |
+| `e2e` | Writing Playwright end-to-end tests |
+| `security-audit` | Before any PR touching auth, forms, or API calls |
+| `pii` | Any code handling personal data |
+| `page-speed` | Performance optimisation |
+| `adr-writer` | Documenting architectural decisions |
+| `business-doc-writer` | Before committing business logic changes |
+| `upgrade` | Auditing or upgrading dependencies |
+
+---
+
+## MCP Servers
+
+Configured in `.mcp.json`:
+
+| Server | Purpose |
+|--------|---------|
+| `context7` | Fetch current library/framework docs |
+| `shadcn` | Add shadcn components |
+| `figma` | Read Figma designs |
+| `playwright` | Browser automation for e2e testing |
+| `composio` | Third-party integrations |
+| `clickup` | Task management |
+
+---
+
+## Hooks
+
+`.claude/hooks/` contains three auto-running hooks:
+
+| Hook | Trigger | Action |
+|------|---------|--------|
+| `post-edit-check.sh` | After file edits | Runs `pnpm lint` |
+| `type-check.sh` | After file edits | Runs `pnpm type-check` |
+| `commit-guard.sh` | Before commit | Validates conventional commit format |
